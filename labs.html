@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<htnml lang="en">
+    
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Labs</title>
+    </head>
+    <body>
+
+        <!--클릭버튼 실습-->
+        <h3>Internal JS</h3>
+        <button id = "clickBtn2" onclick  = "clickMe()">Click Me</button>
+
+
+        <!--클릭버튼 실습-->
+        <h3>Internal JS</h3>
+        <div id = "clickBtn" onclick  = "clickMe()">Click Me</div>
+
+
+
+        <!--계산기 실습-->
+        <h1>계산기</h1>
+        <input type = "text" , id = "num1">
+        <input type = "text" , id = "num2">
+        <button id = "add">+</button>
+        <input id = "result"></input>
+    </body>
+
+    <script>
+        let num1 = document.querySelector("#num1");
+        let  num2 = document.querySelector("#num2");
+        let addBtn = document.querySelector("#add");
+        let result = document.querySelector("#result");
+
+        addBtn.addEventListener("click", function() {
+            let first = parseString(num1.value);
+            let second = parseString(num2.value);
+            let sum = first + second;
+            result.value = sum;
+        });
+
+        function clickMe() {
+            const button = document.querySelector("#clickBtn");
+            button.innerText = "Clicked!";
+            alert("버튼이 클릭되었습니다.");
+        }
+
+        window.addEventListener("load" , function(){
+            const button2 = document.querySelector("#clickBtn2");
+        })
+            
+
+    </script>
+    <style>
+        h1 {
+            color : rgb(124, 17, 186);
+        }
+    </style>
+</html>

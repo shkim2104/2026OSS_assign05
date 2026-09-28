@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="username">
+        <input type="text" name="username" placeholder="사용자 이름을 입력하세요" required />
+        <input type="submit" value="전송"/>
+    </form>
+</body>
+
+<script>
+    const form = document.querySelector("#username");
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const usernameInput = form.elements.username;
+        const username = usernameInput.value.trim();
+
+        if (username) {
+            alert(`사용자 이름: ${username}`);
+            usernameInput.value = ""; // 입력 필드 초기화
+        } else {
+            alert("사용자 이름을 입력하세요.");
+        }
+    });
