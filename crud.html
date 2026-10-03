@@ -32,13 +32,68 @@
             <button id = "addButton">추가히기</button>
         </div>
 
+        <div>
 
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>맛집 이름</th>
+                    <th>음식 종류</th>
+                    <th>주소</th>
+                    <th>평점</th>
+                    <th>설정</th>
+                </tr>
+            </thead>
+            <tbody id = "restaurantList"></tbody>
+        </table>
 
         <script>
-            let restaurantList = [];
+            let restaurantList = [
+                {id : 1, name : "카츠닉", category : "일식", location : "포항 북구", rating : 5},
+                {id : 2, name : "헤이안", category : "카페", location : "포항 북구", rating : 4},
+                {id : 3, name : "김종구", category : "한식", location : "포항 북구", rating : 4.5}
+            ];
 
-            let pushId = 1;
+            let pushId = 4;
             let changId = null;
+
+            window.onload = function(){
+                const nameInput = document.getElementById("storename");
+                const categoryInput = document.getElementById("foodcategory");
+                const locationInput = document.getElementById("storelocation");
+                const ratingInput = document.getElementById("rating");
+                const addButton = document.getElementById("addButton");
+
+                function render(list){
+                    restaurantList.innertext = "";
+                    
+                    list.forEach(function(i) {
+                        const tr = document.createElement("tr");
+
+                        const TodoName = document.createElement("todoName");
+                        TodoName.innerText = i.name;
+
+                        const TodoCategory = document.createElement("todoCategory");
+                        TodoCategory.innerText = i.category;
+
+                        const TodoLocation = document.createElement("todoLocation");
+                        TodoLocation.innerText = i.location;
+
+                        const TodoRating = document.createElement("todoRating");
+                        TodoRating.innerText = i.rating;
+
+                        const TodoSetting = document.createElement("todoSetting");
+                        TodoSetting.innertext = "설정";
+
+                        TodoSetting.addEventListener("click" , function() {
+                            Edit(i.id);
+                        });
+
+                    });
+                };
+            }
         </script>
     </body>
 </html>
