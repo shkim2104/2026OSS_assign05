@@ -6,29 +6,58 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        body{
+            font-family: sans-serif; margin: 40px;
+            #itemInput{
+                width: 200px; padding: 6px;
+            }
+            button{padding: 6px 12px; cursor: pointer;}
+
+            #itemList li{
+                margin: 6px 0;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <h2>DOM 연습</h2>
     <form id="username">
-        <input type="text" name="username" placeholder="사용자 이름을 입력하세요" required />
-        <input type="submit" value="전송"/>
+        <input type="text" name="username" id="itemInput" placeholder="사용자 이름을 입력하세요" required />
+        <button id = "addButton">추가</button>
+
+        <ul id = "itemList"></ul>
     </form>
+
+    <script>
+        window.onload = function(){
+            const input = document.getElementById("itemInput");
+            const addButton = document.getElementById("addButton");
+            const list = document.querySelector("#itemList");
+
+            addButton.addEventListener("Click" , function(){
+                const text = input.value;
+
+                if(text == ""){
+                    alert("내용 입력");
+                    return;
+                }
+
+                const li = document.createElement("li");
+                
+                const span = document.createElement("span");
+                span.innerText = text;
+
+
+
+                li.appendChild(span);
+                
+            });
+        };
+    </script>
 </body>
 
-<script>
-    const form = document.querySelector("#username");
-    form.addEventListener("submit", function(event) {
-        event.preventDefault();
-
-        const usernameInput = form.elements.username;
-        const username = usernameInput.value.trim();
-
-        if (username) {
-            alert(`사용자 이름: ${username}`);
-            usernameInput.value = ""; // 입력 필드 초기화
-        } else {
-            alert("사용자 이름을 입력하세요.");
-        }
-    });
 
 
