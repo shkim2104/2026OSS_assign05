@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
@@ -24,12 +24,11 @@
 
 <body>
     <h2>DOM 연습</h2>
-    <form id="username">
         <input type="text" name="username" id="itemInput" placeholder="사용자 이름을 입력하세요" required />
         <button id = "addButton">추가</button>
 
         <ul id = "itemList"></ul>
-    </form>
+  
 
     <script>
         window.onload = function(){
@@ -37,7 +36,7 @@
             const addButton = document.getElementById("addButton");
             const list = document.querySelector("#itemList");
 
-            addButton.addEventListener("Click" , function(){
+            addButton.addEventListener("click" , function(){
                 const text = input.value;
 
                 if(text == ""){
@@ -50,9 +49,9 @@
                 const span = document.createElement("span");
                 span.innerText = text;
 
-                const deleteButton = document.Element("button");
+                const deleteButton = document.createElement("button");
                 deleteButton.innerText = "삭제";
-                deleteButton.addEventListener("Click", function(){
+                deleteButton.addEventListener("click", function(){
                     li.remove();
                 });
 
