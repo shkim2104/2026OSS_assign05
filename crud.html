@@ -122,15 +122,33 @@
                         return;
                     }
 
-                    restaurants.push({
-                        id : pushId,
-                        name : nameInput.value.trim(),
-                        category : categoryInput.value.trim(),
-                        location : locationInput.value.trim(),
-                        menu : menuInput.value.trim(),
-                        rating : Number(ratingInput.value)
-                    });
-                    pushId++;
+                    if (changId !== null) {
+                        
+                        const item = restaurants.find(function(r) {
+                            return r.id === changId;
+                        });
+
+                        item.name = nameInput.value.trim();
+                        item.category = categoryInput.value.trim();
+                        item.location = locationInput.value.trim();
+                        item.menu = menuInput.value.trim();
+                        item.rating = Number(ratingInput.value);
+
+                        changId = null;
+                        addButton.innerText = "추가히기";
+
+                    } else {
+                        restaurants.push({
+                            id : pushId,
+                            name : nameInput.value.trim(),
+                            category : categoryInput.value.trim(),
+                            location : locationInput.value.trim(),
+                            menu : menuInput.value.trim(),
+                            rating : Number(ratingInput.value)
+                        });
+
+                        pushId++;
+                    }
 
                     render(restaurants);
 
@@ -139,7 +157,24 @@
                     locationInput.value = "";
                     menuInput.value = "";
                     ratingInput.value = "";
+
                 });
+
+                function Edit(id) {
+                    const item = restaurants.find(function(r) {
+                        return r.id === id;
+                    });
+
+                    nameInput.value = item.name;
+                    categoryInput.value = item.category;
+                    locationInput.value = item.location;
+                    menuInput.value = item.menu;
+                    ratingInput.value = item.rating;
+
+                    changId = id;
+                    addButton.innerText = "저장";
+                    
+                }
             }
         </script>
     </body>
