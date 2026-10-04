@@ -71,6 +71,7 @@
                 const categoryInput = document.getElementById("foodcategory");
                 const locationInput = document.getElementById("storelocation");
                 const ratingInput = document.getElementById("rating");
+                const menuInput = document.getElementById("storemenu");
                 const addButton = document.getElementById("addButton");
                 const restaurantList = document.querySelector("#restaurantList");
 
@@ -112,6 +113,33 @@
 
                     });
                 };
+
+                addButton.addEventListener("click", function() {
+                    if (nameInput.value.trim() === "" || categoryInput.value.trim() === "" ||
+                        locationInput.value.trim() === "" || menuInput.value.trim() === "" ||
+                        ratingInput.value.trim() === "") {
+                        alert("모든 항목을 입력하세요.");
+                        return;
+                    }
+
+                    restaurants.push({
+                        id : pushId,
+                        name : nameInput.value.trim(),
+                        category : categoryInput.value.trim(),
+                        location : locationInput.value.trim(),
+                        menu : menuInput.value.trim(),
+                        rating : Number(ratingInput.value)
+                    });
+                    pushId++;
+
+                    render(restaurants);
+
+                    nameInput.value = "";
+                    categoryInput.value = "";
+                    locationInput.value = "";
+                    menuInput.value = "";
+                    ratingInput.value = "";
+                });
             }
         </script>
     </body>
