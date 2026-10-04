@@ -137,7 +137,26 @@
                     if (nameInput.value.trim() === "" || categoryInput.value.trim() === "" ||
                         locationInput.value.trim() === "" || menuInput.value.trim() === "" ||
                         ratingInput.value.trim() === "") {
-                        alert("모든 항목을 입력하세요.");
+                        alert("입력해주세요");
+                        return;
+                    }
+
+                    if (nameInput.value.trim().length < 2 || nameInput.value.trim().length > 20) {
+                        alert("맛집 이름은 가게상호명");
+                        nameInput.focus();
+                        return;
+                    }
+
+                    if (menuInput.value.trim().length > 30) {
+                        alert("대표메뉴는 하나만 ");
+                        menuInput.focus();
+                        return;
+                    }
+
+                    const ratingValue = Number(ratingInput.value);
+                    if (!(ratingValue >= 0 && ratingValue <= 5)) {
+                        alert("평점 = 5에서 0점 사이");
+                        ratingInput.focus();
                         return;
                     }
 
