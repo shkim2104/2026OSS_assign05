@@ -77,34 +77,49 @@
 
 
                 function render(list){
-                    restaurantList.innertext = "";
-                    
+                    restaurantList.innerText = "";
+
                     list.forEach(function(i) {
                         const tr = document.createElement("tr");
 
-                        const TodoName = document.createElement("todoName");
+                        const TodoId = document.createElement("td");
+                        TodoId.innerText = i.id;
+
+                        const TodoName = document.createElement("td");
                         TodoName.innerText = i.name;
 
-                        const TodoCategory = document.createElement("todoCategory");
+                        const TodoCategory = document.createElement("td");
                         TodoCategory.innerText = i.category;
 
-                        const TodoLocation = document.createElement("todoLocation");
+                        const TodoLocation = document.createElement("td");
                         TodoLocation.innerText = i.location;
 
-                        const TodoRating = document.createElement("todoRating");
+                        const TodoMenu = document.createElement("td");
+                        TodoMenu.innerText = i.menu;
+
+                        const TodoRating = document.createElement("td");
                         TodoRating.innerText = i.rating;
 
-                        const TodoSetting = document.createElement("todoSetting");
-                        TodoSetting.innertext = "설정";
+                        const TodoSetting = document.createElement("td");
 
-                        TodoSetting.addEventListener("click" , function() {
+                        const editButton = document.createElement("button");
+                        editButton.innerText = "수정";
+
+                        const deleteButton = document.createElement("button");
+                        deleteButton.innerText = "삭제";
+
+                        editButton.addEventListener("click" , function() {
                             Edit(i.id);
                         });
 
+                        TodoSetting.appendChild(editButton);
+                        TodoSetting.appendChild(deleteButton);
 
+                        tr.appendChild(TodoId);
                         tr.appendChild(TodoName);
                         tr.appendChild(TodoCategory);
                         tr.appendChild(TodoLocation);
+                        tr.appendChild(TodoMenu);
                         tr.appendChild(TodoRating);
                         tr.appendChild(TodoSetting);
                         restaurantList.appendChild(tr);
@@ -173,8 +188,10 @@
 
                     changId = id;
                     addButton.innerText = "저장";
-                    
+
                 }
+
+                render(restaurants);
             }
         </script>
     </body>
