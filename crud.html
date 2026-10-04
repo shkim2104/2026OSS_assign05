@@ -112,6 +112,10 @@
                             Edit(i.id);
                         });
 
+                        deleteButton.addEventListener("click" , function() {
+                            Delete(i.id);
+                        });
+
                         TodoSetting.appendChild(editButton);
                         TodoSetting.appendChild(deleteButton);
 
@@ -189,6 +193,28 @@
                     changId = id;
                     addButton.innerText = "저장";
 
+                }
+
+                function Delete(id) {
+                    if (!confirm("삭제하시겠습니까?")) {
+                        return;
+                    }
+
+                    restaurants = restaurants.filter(function(r) {
+                        return r.id !== id;
+                    });
+
+                    if (changId === id) {
+                        changId = null;
+                        addButton.innerText = "추가히기";
+                        nameInput.value = "";
+                        categoryInput.value = "";
+                        locationInput.value = "";
+                        menuInput.value = "";
+                        ratingInput.value = "";
+                    }
+
+                    render(restaurants);
                 }
 
                 render(restaurants);
