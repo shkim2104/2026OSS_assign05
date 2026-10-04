@@ -16,6 +16,10 @@
             #itemList li{
                 margin: 6px 0;
             }
+            table {
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
         }
 
     </style>
@@ -50,10 +54,10 @@
         </table>
 
         <script>
-            let restaurantList = [
-                {id : 1, name : "카츠닉", category : "일식", location : "포항 북구", rating : 5},
-                {id : 2, name : "헤이안", category : "카페", location : "포항 북구", rating : 4},
-                {id : 3, name : "김종구", category : "한식", location : "포항 북구", rating : 4.5}
+            let restaurants = [
+                {id : 1, name : "카츠닉", category : "일식", location : "포항 북구", menu : "돈카츠", rating : 5},
+                {id : 2, name : "헤이안", category : "카페", location : "포항 북구", menu : "라떼", rating : 4},
+                {id : 3, name : "김종구", category : "한식", location : "포항 북구", menu : "국밥", rating : 4.5}
             ];
 
             let pushId = 4;
@@ -65,6 +69,8 @@
                 const locationInput = document.getElementById("storelocation");
                 const ratingInput = document.getElementById("rating");
                 const addButton = document.getElementById("addButton");
+                const restaurantList = document.querySelector("#restaurantList");
+
 
                 function render(list){
                     restaurantList.innertext = "";
@@ -90,6 +96,16 @@
                         TodoSetting.addEventListener("click" , function() {
                             Edit(i.id);
                         });
+
+
+                        tr.appendChild(TodoName);
+                        tr.appendChild(TodoCategory);
+                        tr.appendChild(TodoLocation);
+                        tr.appendChild(TodoRating);
+                        tr.appendChild(TodoSetting);
+                        restaurantList.appendChild(tr);
+
+
 
                     });
                 };
